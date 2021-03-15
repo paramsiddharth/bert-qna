@@ -1,0 +1,5 @@
+ref/
+.vscode/
+tmp/
+**/debug.log
+**/__pycache__/
