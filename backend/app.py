@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from os import environ
 from sys import argv as args
 
@@ -9,10 +10,7 @@ try:
 except:
 	PORT = 5000
 app = Flask(__name__)
-
-@app.errorhandler(400)
-def bad_request(*args, **kwargs):
-	return 'Only JSON request body allowed.', 400
+CORS(app)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -20,8 +18,8 @@ def index():
 		return 'OK'
 	else:
 		props = ('context', 'question')
-		if request.content_type != 'application/json':
-			return 'Only JSON request body allowed.'
+		if request.content_type.split(';')[0] != 'application/json':
+			return 'Only JSON request body allowed.', 400
 		if request.json is None:
 			return 'JSON request body required.', 400
 		for prop in props:

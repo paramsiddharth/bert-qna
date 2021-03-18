@@ -78,7 +78,7 @@ model = DistilBertForQuestionAnswering.from_pretrained(MODEL_PATH)
 
 # Encode input
 def encode(context: str, question: str, tokenizer: DistilBertTokenizer):
-	encoded = tokenizer.encode_plus(question, context)
+	encoded = tokenizer.encode_plus(question, context, max_length=512)
 
 	input_ids = encoded['input_ids']
 	input_mask = encoded['attention_mask'] # Boolean mask for differentiating context and question
