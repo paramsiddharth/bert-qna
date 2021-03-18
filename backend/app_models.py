@@ -14,7 +14,7 @@ def ensure_models():
 		if Path(MODEL_PATH).is_dir():
 			rmtree(MODEL_PATH)
 		makedirs(MODEL_PATH)
-		tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased',return_token_type_ids = True)
+		tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased', return_token_type_ids = True)
 		tokenizer.save_pretrained(MODEL_PATH)
 		model = DistilBertForQuestionAnswering.from_pretrained('distilbert-base-uncased-distilled-squad')
 		model.save_pretrained(MODEL_PATH)

@@ -1,5 +1,3 @@
-from transformers import DistilBertTokenizer, DistilBertForQuestionAnswering
-import torch
 from flask import Flask, request, jsonify
 from os import environ
 from sys import argv as args
@@ -27,13 +25,14 @@ def index():
 		if request.json is None:
 			return 'JSON request body required.', 400
 		for prop in props:
-			if prop not in request.json or request.json.get(prop) is not str:
+			if prop not in request.json or type(request.json.get(prop)) is not str:
 				return f'{prop.capitalize()} not specified.', 400
 		context, question = request.json.get('context'), request.json.get('question')
 		try:
-			return answer(context=context, question=question)
-		except:
-			return None
+			return jsonify(answer(context=context, question=question))
+		except Exception as e:
+			print('Error:', e)
+			return jsonify(None)
 
 if __name__ == '__main__':
 	debug = False
