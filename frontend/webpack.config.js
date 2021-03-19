@@ -1,6 +1,18 @@
+const fs = require('fs');
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const { ProvidePlugin } = require('webpack');
+const { ProvidePlugin, DefinePlugin } = require('webpack');
+
+if (fs.existsSync('.env'))
+	require('dotenv').config();
+
+let environmentVars = {};
+
+for (const key in process.env) {
+	if (typeof key === 'string' && key.startsWith('REACT_APP_')) {
+		environmentVars[`process.env.${key}`] = JSON.stringify(process.env[key]);
+	}
+}
 
 module.exports = {
 	mode: 'production',
@@ -25,6 +37,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new DefinePlugin(environmentVars),
 		new ProvidePlugin({
 			React: 'react'
 		}),

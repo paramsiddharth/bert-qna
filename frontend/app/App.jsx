@@ -10,11 +10,11 @@ const App = () => {
 
 	const ask = async () => {
 		try {
-			const res = await axios.post('http://localhost:5000', {
+			setResult('...');
+			const res = await axios.post(process.env.REACT_APP_API_URL, {
 				context,
 				question
 			});
-			console.log(res);
 			if (res.data !== '')
 				setResult(res.data);
 			else
