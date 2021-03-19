@@ -10,14 +10,19 @@
   "author": "Param Siddharth <contact@paramsid.com> (http://www.paramsid.com/)",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "axios": "^0.21.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-loading-dot": "^1.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.13.5",
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-react": "^7.12.13",
+    "@fontsource/roboto": "^4.2.2",
     "babel-loader": "^8.2.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-stage-0": "^6.24.1",

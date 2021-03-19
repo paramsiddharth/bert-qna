@@ -1,69 +1,17 @@
-import {
-	useState
-} from 'react';
-import axios from 'axios';
+import Footer from './components/Footer.jsx';
+import Header from './components/Header.jsx';
+import Main from './components/Main.jsx';
 
 const App = () => {
-	const [result, setResult] = useState(null);
-	const [context, setContext] = useState('');
-	const [question, setQuestion] = useState('');
-
-	const ask = async () => {
-		try {
-			setResult('...');
-			const res = await axios.post(process.env.REACT_APP_API_URL, {
-				context,
-				question
-			});
-			if (res.data !== '')
-				setResult(res.data);
-			else
-				setResult('Empty');
-		} catch (e) {
-			console.log(e.response);
-			setResult('Error');
-		}
-	};
 
 	return <>
-		<div>
-			<pre>
-			Question: {
-				question == ''
-				? 'Empty'
-				: question
-			}
-			<br/>
-			Context: {
-				context == ''
-				? 'Empty'
-				: context.length <= 30
-				? context
-				: (context.substr(0, 30) + '...')
-			}
-			<br/>
-			Result: {
-				result == null || result == ''
-				? 'None'
-				: result
-			}
-			</pre>
-		</div>
-		<div>
-			<button
-				onClick={ask} >
-				Ask
-			</button>
-			<br/>
-			<input placeholder='Question'
-				value={question}
-				onChange={e => setQuestion(e.target.value)} />
-			<br/>
-			<textarea
-				placeholder='Context'
-				value={context}
-				onChange={e => setContext(e.target.value)} ></textarea>
-		</div>
+		<Header title='Answering Questions using BERT' />
+		<Main />
+		<Footer>
+			Made with ❤ by <a href='https://www.paramsid.com'
+				target='_blank' >Param</a> and <a href='https://github.com/DARK-art108'
+				target='_blank' >Ritesh</a>.
+		</Footer>
 	</>;
 };
 

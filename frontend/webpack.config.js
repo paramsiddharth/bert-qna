@@ -32,7 +32,14 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: 'babel-loader',	
+				use: [
+					'style-loader',
+					'css-loader'
+				]
+			},
+			{
+				test: /\.woff2?$/,
+				type: 'asset/resource'
 			}
 		]
 	},
