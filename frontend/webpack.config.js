@@ -49,7 +49,8 @@ module.exports = {
 			React: 'react'
 		}),
 		new HTMLWebpackPlugin({
-			template: path.join(__dirname, 'app', 'index.html')
+			template: path.join(__dirname, 'app', 'index.html'),
+			favicon: path.join(__dirname, 'app', 'favicon.ico')
 		})
 	]
 };
