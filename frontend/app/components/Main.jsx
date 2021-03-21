@@ -9,6 +9,8 @@ import {
 } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
 
+const API_URL = process.env.REACT_APP_API_URL ?? 'http://localhost:5000';
+
 const BG_COLOR = deepOrange[300];
 const TIMEOUT = 2700;
 
@@ -80,7 +82,7 @@ const Main = props => {
 			clearTimeout(timeout);
 
 		try {
-			const res = await axios.post(process.env.REACT_APP_API_URL, {
+			const res = await axios.post(API_URL, {
 				context,
 				question
 			});
