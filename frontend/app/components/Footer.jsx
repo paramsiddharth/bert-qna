@@ -37,8 +37,8 @@ const Footer = props => {
 					variant='h6' >
 					Made with <span style={{
 						color: red[400],
-						'-webkit-text-stroke-width': '1px',
-						'-webkit-text-stroke-color': 'black'
+						WebkitTextStrokeWidth: '1px',
+						WebkitTextStrokeColor: 'black'
 					}}>❤</span> by <a href='https://www.paramsid.com'
 					target='_blank' >Param</a> and <a href='https://github.com/DARK-art108'
 					target='_blank' >Ritesh</a>.

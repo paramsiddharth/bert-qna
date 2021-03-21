@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import {
 	Box,
 	Grid,
@@ -8,6 +7,10 @@ import {
 	Paper
 } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
+// import { Loading } from 'react-loading-dot';
+import Loader from 'react-loader-spinner';
+
+import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL ?? 'http://localhost:5000';
 
@@ -49,10 +52,44 @@ const useStyles = makeStyles(theme => ({
 			fontSize: 50,
 			order: 2
 		}
+	},
+	loader: {
+		display: 'none',
+		[theme.breakpoints.up('md')]: {
+			display: 'block'
+		}
+	},
+	loaderMobile: {
+		[theme.breakpoints.up('md')]: {
+			display: 'none'
+		}
 	}
 }));
 
+const LoadingWala = () => {
+	const classes = useStyles();
+
+	return <>
+		<Loader
+			className={classes.loader}
+			type="Circles"
+			color={deepOrange[600]}
+			height={100}
+			width={100}
+		/>
+		<Loader
+			className={classes.loaderMobile}
+			type="Circles"
+			color={deepOrange[600]}
+			height={40}
+			width={40}
+		/>
+	</>;
+};
+
 const Main = props => {
+	const classes = useStyles();
+
 	const [result, setResult] = useState('Ask me anything.');
 	const [context, setContext] = useState('');
 	const [question, setQuestion] = useState('');
@@ -63,13 +100,11 @@ const Main = props => {
 		if (context == '' || question == '')
 			return;
 		setEmoji(`🤔`);
-		setResult('...');
+		setResult(<LoadingWala />);
 		if (timeout != null)
 			clearTimeout(timeout);
 		setRTimeout(setTimeout(ask, TIMEOUT));
 	}, [context, question]);
-
-	const classes = useStyles();
 
 	document.body.style.backgroundColor = BG_COLOR;
 
