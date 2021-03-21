@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 	},
 	main: {
 		margin: 20,
-		// height: 400,
 		paddingBottom: 60,
 		textAlign: 'center'
 	},
@@ -47,7 +46,7 @@ const useStyles = makeStyles(theme => ({
 		fontSize: 30,
 		order: 1,
 		[theme.breakpoints.up('md')]: {
-			fontSize: 70,
+			fontSize: 50,
 			order: 2
 		}
 	}
@@ -123,7 +122,8 @@ const Main = props => {
 						</Grid>
 						<Grid 
 							id='result'
-							item xs={12} md={6} className={classes.output} >
+							item xs={12} md={6} className={classes.output}
+							 >
 							{result}
 						</Grid>
 					</Grid>

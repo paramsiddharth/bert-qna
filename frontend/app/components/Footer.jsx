@@ -2,7 +2,7 @@ import {
 	createMuiTheme, ThemeProvider, makeStyles,
 	AppBar, Toolbar, Typography
 } from '@material-ui/core';
-import { purple } from '@material-ui/core/colors';
+import { purple, red } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
 	palette: {
@@ -35,7 +35,13 @@ const Footer = props => {
 				<Typography
 					align='center'
 					variant='h6' >
-					{props.children}
+					Made with <span style={{
+						color: red[400],
+						'-webkit-text-stroke-width': '1px',
+						'-webkit-text-stroke-color': 'black'
+					}}>❤</span> by <a href='https://www.paramsid.com'
+					target='_blank' >Param</a> and <a href='https://github.com/DARK-art108'
+					target='_blank' >Ritesh</a>.
 				</Typography>
 			</Toolbar>
 		</AppBar>
