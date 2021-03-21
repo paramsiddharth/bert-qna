@@ -106,4 +106,8 @@ def answer(context: str, question: str):
 	answer_tokens = get_answer_tokens(input_ids, input_mask, tokenizer)
 
 	answer = tokenizer.convert_tokens_to_string(answer_tokens)
-	return answer
+
+	if answer.strip() == '':
+		return ''
+
+	return answer.replace(' , ', ', ').strip().rstrip(',').strip().capitalize() + '.'
