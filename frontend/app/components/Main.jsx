@@ -7,7 +7,6 @@ import {
 	Paper
 } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
-// import { Loading } from 'react-loading-dot';
 import Loader from 'react-loader-spinner';
 
 import axios from 'axios';

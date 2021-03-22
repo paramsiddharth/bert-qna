@@ -6,7 +6,9 @@ const { ProvidePlugin, DefinePlugin } = require('webpack');
 if (fs.existsSync('.env'))
 	require('dotenv').config();
 
-let environmentVars = {};
+let environmentVars = {
+	'process.env': {}
+};
 
 for (const key in process.env) {
 	if (typeof key === 'string' && key.startsWith('REACT_APP_')) {
